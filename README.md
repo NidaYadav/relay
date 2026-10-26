@@ -2,7 +2,22 @@
 
 Relay helps people complete PDF forms by finding proposed answers in saved documents, showing sources, and asking a trusted helper selected questions without sharing the whole document bundle.
 
-This repository is an application-only snapshot. Development videos, reference images, private notes, old database contents, planning tools and previous Git history are not included.
+This repository contains the application and public hackathon planning evidence. Development videos, reference images, private notes, old database contents, planning tools and previous Git history are not included.
+
+## Build With AI hackathon evidence
+
+The [Devpost folder](devpost/) preserves the project's planning decisions and build progress:
+
+| Artifact | Purpose |
+|---|---|
+| [Approved scope](devpost/scope.md) | Intended user, problem, unique kernel and proof-of-concept boundary |
+| [Approved PRD](devpost/prd.md) | Core journey, expected behavior and acceptance criteria |
+| [Approved technical spec](devpost/spec.md) | Architecture, components, storage and technical decisions |
+| [Build checklist and revisions](devpost/checklist.md) | Implemented slices, verification requirements and user-directed changes |
+
+These documents include planned behavior as well as completed work. Guided answering, document-crop sharing and reading settings remain unfinished; final hands-on review, learning wrap-up and app-map generation are not marked complete. The implementation and limitations below describe what works today. Historical references to slices, commits or paths record the original build context and may not all exist in this clean snapshot.
+
+The personal learner profile is intentionally excluded from the public repository.
 
 ## What works
 
@@ -108,6 +123,7 @@ From the repository root in the configured environment:
 - [web/](web/): home, vault and helper screens; no frontend build step.
 - [docs/](docs/): synthetic demo PDFs required by the sample flow.
 - [tests/](tests/): automated behavior checks.
+- [devpost/](devpost/): public hackathon scope, PRD, technical spec and build checklist.
 - [Dockerfile](Dockerfile) and [docker-compose.yml](docker-compose.yml): single-service deployment.
 
 ## License
