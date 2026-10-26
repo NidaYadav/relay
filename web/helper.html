@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>A Relay request for help</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <span class="wordmark">Relay<span aria-hidden="true">/</span></span>
+      <span class="topbar-note">A small request from someone you trust</span>
+    </header>
+    <main>
+      <section class="sheet">
+        <p class="eyebrow">ONE STEP, NOT THE WHOLE TASK</p>
+        <h1 id="helper-title" tabindex="-1">A person asked for your help</h1>
+        <p id="helper-intro" class="intro">You can answer the questions below. You cannot see their other answers or documents. Leave a box empty if you don't know the answer.</p>
+        <p id="helper-error" class="error" role="alert" hidden></p>
+        <form id="answer-form" hidden>
+          <div id="helper-questions"></div>
+          <button class="primary" type="submit">Send answers</button>
+        </form>
+        <p id="helper-success" role="status" hidden></p>
+      </section>
+    </main>
+    <script type="module" src="/static/helper.js"></script>
+  </body>
+</html>

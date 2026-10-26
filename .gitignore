@@ -1,0 +1,27 @@
+# personal learning context stays out of commits
+/devpost/learner-profile.md
+
+# local credentials (a secret-free .env.example is fine)
+.env
+.env.*
+!.env.example
+
+# runtime data: the SQLite session store and uploaded documents
+/data/
+
+__pycache__/
+*.pyc
+.venv/
+
+# development media, reference material and old database snapshots
+*.mp4
+*.mov
+*.png
+*.jpg
+*.jpeg
+/seed/
+/.agents/
+/skills-lock.json
+/devpost/
+/demo-playbook.md
+/RELAY_DEVPOST_SUBMISSION.md

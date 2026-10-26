@@ -1,0 +1,13 @@
+services:
+  relay:
+    build: .
+    image: relay
+    ports:
+      - "8000:8000"
+    env_file: .env
+    volumes:
+      - relay-data:/app/data
+    restart: unless-stopped
+
+volumes:
+  relay-data:

@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Relay — paperwork, one step at a time</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="/">Relay<span aria-hidden="true">/</span></a>
+      <nav aria-label="Main"><a class="nav-link" href="/vault">Your vault</a></nav>
+    </header>
+    <main>
+      <section id="home" class="sheet">
+        <p class="eyebrow">PUBLIC SERVICE PAPERWORK</p>
+        <h1>Keep the task in your hands.</h1>
+        <p class="intro">Relay finds what it can in your papers, helps you answer the rest, and asks a trusted person only for the step you need help with.</p>
+        <div class="notice" role="note">
+          <strong>Your vault documents are sent to OpenAI when a form is read.</strong>
+          <span>Add only documents you are comfortable with to your vault. The demo uses synthetic files. Processing needs a server-side API key and an internet connection.</span>
+        </div>
+        <section class="vault-block" aria-labelledby="vault-title">
+          <h2 id="vault-title">Your vault</h2>
+          <p id="vault-summary" class="small-note"></p>
+          <ul id="vault-list" class="vault-list"></ul>
+          <p id="vault-empty" class="vault-empty" hidden></p>
+          <a class="upload-button" href="/vault">Manage your vault</a>
+        </section>
+        <div class="actions">
+          <label class="upload-button" for="form-upload">Choose a PDF form</label>
+          <input id="form-upload" type="file" accept="application/pdf,.pdf">
+        </div>
+        <p id="home-error" class="error" role="alert" hidden></p>
+        <section class="vault-block demo-block" aria-labelledby="demo-title">
+          <h2 id="demo-title">Or try the demo</h2>
+          <p id="demo-folder" class="small-note"></p>
+          <ul id="demo-vault-list" class="vault-list"></ul>
+          <button id="sample-button" class="primary">Try the sample renewal</button>
+        </section>
+        <p class="small-note">The demo files are synthetic and clearly marked. No real agency receives anything.</p>
+      </section>
+
+      <section id="brief" class="sheet" hidden>
+        <div class="step-label">YOUR RENEWAL <span id="status-label">Reading</span></div>
+        <h1 id="task-title" tabindex="-1">Reading your documents</h1>
+        <p id="task-summary" class="intro"></p>
+        <section class="worklog" aria-labelledby="worklog-title">
+          <h2 id="worklog-title">Relay's work log</h2>
+          <ol id="worklog" aria-live="polite"></ol>
+        </section>
+        <p id="processing-error" class="error" role="alert" hidden></p>
+        <button id="retry-button" class="secondary" hidden>Retry reading</button>
+        <div id="task-result" hidden>
+          <div class="deadline-card">
+            <p class="eyebrow">RETURN BY</p>
+            <p id="deadline"></p>
+            <blockquote id="deadline-quote"></blockquote>
+          </div>
+          <div class="counts" aria-label="Question summary">
+            <div><strong id="count-person">0</strong><span>You can answer</span></div>
+            <div><strong id="count-documents">0</strong><span>Found in your vault</span></div>
+            <div><strong id="count-helper">0</strong><span>Needs another person</span></div>
+          </div>
+          <h2>Questions on this form</h2>
+          <div id="questions"></div>
+          <div class="export-block">
+            <a id="export-link" class="upload-button" href="#" download>Download the questions and answers (PDF)</a>
+            <button id="forget-button" class="text-button">Forget this session</button>
+          </div>
+          <h2>Your vault</h2>
+          <p id="vault-note" class="small-note"></p>
+          <ul id="uploaded-documents" class="vault-list"></ul>
+          <h2>Documents the form asks for</h2>
+          <ul id="documents-requested"></ul>
+        </div>
+        <section id="helper-panel" class="helper-panel" hidden aria-labelledby="helper-title">
+          <p class="eyebrow">A FEW STEPS, NOT THE WHOLE TASK</p>
+          <h2 id="helper-title">Ask a trusted person</h2>
+          <p>Choose the questions you are unsure about. Your helper sees only these questions and answers them in separate boxes. They see nothing else.</p>
+          <p id="helper-last-result" class="small-note" role="status" hidden></p>
+          <fieldset id="helper-picker" class="helper-picker">
+            <legend>Questions to send</legend>
+            <div id="helper-choices"></div>
+            <p id="helper-picker-error" class="error" role="alert" hidden></p>
+            <button id="prepare-helper" class="secondary">Preview the helper's task</button>
+          </fieldset>
+          <div id="handoff-preview" class="handoff-preview" hidden>
+            <h3>What the helper will see</h3>
+            <div id="preview-questions"></div>
+            <p id="leak-warning" class="error" role="alert" hidden></p>
+            <div class="privacy-summary">
+              <strong>What stays with you</strong>
+              <span id="stays-summary"></span>
+              <span>This request shares no document pages or other answers.</span>
+            </div>
+            <button id="update-preview" class="secondary">Update preview</button>
+            <button id="send-helper" class="primary">Create one-time link</button>
+            <button id="change-selection" class="text-button">Choose different questions</button>
+          </div>
+          <div id="helper-sent" class="helper-sent" hidden>
+            <p>The link works once and expires in 24 hours. Send it only to someone you trust.</p>
+            <a id="helper-link" target="_blank" rel="noopener noreferrer"></a>
+            <div class="actions">
+              <button id="copy-helper-link" class="secondary">Copy link</button>
+              <button id="cancel-helper" class="text-button">Cancel request</button>
+            </div>
+            <p id="helper-link-status" role="status"></p>
+          </div>
+          <div id="helper-review" class="helper-review" hidden>
+            <h3>Your helper replied</h3>
+            <div id="helper-answers"></div>
+            <button id="approve-helper" class="primary">Approve answers</button>
+            <button id="reject-helper" class="secondary">Reject answers</button>
+          </div>
+        </section>
+        <button id="back-button" class="text-button">Start another renewal</button>
+      </section>
+    </main>
+    <script type="module" src="/static/app.js"></script>
+  </body>
+</html>

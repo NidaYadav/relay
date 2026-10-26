@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Your vault — Relay</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="/">Relay<span aria-hidden="true">/</span></a>
+      <nav aria-label="Main"><a class="nav-link" href="/">Back to your form</a></nav>
+    </header>
+    <main>
+      <section class="sheet">
+        <p class="eyebrow">YOUR VAULT</p>
+        <h1 id="vault-heading" tabindex="-1">The documents Relay reads for every form.</h1>
+        <p class="intro">Save your ID, bank statements and letters here once. When you choose a form, Relay looks for the answers in these documents.</p>
+        <div class="notice" role="note">
+          <strong>Saved in Relay's local database on this computer.</strong>
+          <span>These documents are sent to OpenAI whenever a form is read. Add only documents you are comfortable with, and delete any you no longer want kept.</span>
+        </div>
+
+        <section class="vault-block" aria-labelledby="add-title">
+          <h2 id="add-title">Add documents</h2>
+          <label id="dropzone" class="dropzone" for="vault-files">
+            <strong>Drop PDF files here</strong>
+            <span>or choose files from your computer</span>
+          </label>
+          <input id="vault-files" type="file" accept="application/pdf,.pdf" multiple>
+          <ul id="upload-results" class="upload-results" role="status" aria-live="polite"></ul>
+        </section>
+
+        <section class="vault-block" aria-labelledby="saved-title">
+          <h2 id="saved-title">Saved documents</h2>
+          <p id="vault-usage" class="small-note"></p>
+          <p id="vault-error" class="error" role="alert" hidden></p>
+          <ul id="vault-manage" class="vault-manage"></ul>
+          <p id="vault-empty" class="vault-empty" hidden>Nothing is saved yet. Drop your first PDF above.</p>
+        </section>
+      </section>
+    </main>
+    <script type="module" src="/static/vault.js"></script>
+  </body>
+</html>
